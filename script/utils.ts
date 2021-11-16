@@ -15,11 +15,7 @@ export function waitOn(arg0: { port: string | number; interval?: number }) {
     const timer: NodeJS.Timer = setInterval(() => {
       get(url, (res) => {
         clearInterval(timer)
-        console.log(
-          '[waitOn]',
-          green(`"${url}" are already responsive.`),
-          `(${res.statusCode}: ${res.statusMessage})`
-        )
+        console.log('[waitOn]', green(`"${url}" are already responsive.`))
         resolve(res.statusCode)
       }).on('error', (err) => {
         console.log('[waitOn]', `counter: ${counter++}`)

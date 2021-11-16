@@ -2,10 +2,10 @@
  * @Description: 设置托盘图标与菜单
  * @Author: renlu
  * @Date: 2021-09-26 11:08:49
- * @LastEditTime: 2021-11-15 19:26:31
+ * @LastEditTime: 2021-11-16 09:57:53
  * @LastEditors: renlu
  */
-import { Tray, Menu, BrowserWindow } from 'electron'
+import { app, Tray, Menu, BrowserWindow } from 'electron'
 import createWindow from './create'
 import { options as allWindow } from './options'
 
@@ -20,6 +20,12 @@ export function setTray(): Tray {
       label: '菜单一',
       click() {
         createWindow(allWindow.menuOne.window, allWindow.menuOne.hash)
+      }
+    },
+    {
+      label: '退出',
+      click() {
+        app.exit(0)
       }
     }
   ]
