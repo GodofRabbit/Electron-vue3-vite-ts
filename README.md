@@ -23,3 +23,9 @@ npm run win32 | win64 | mac | linux
 ### 说明
 
 目前在 mac 上运行还不太友好
+
+### 分支说明
+
+本分支为 自动化测试分支，添加了 `puppeteer、robotjs` 两个包，查看演示请右键托盘菜单单击 `自动化测试`
+
+`robotjs` 包安装失败请参考 `https://juejin.cn/post/6891143846105710599`
