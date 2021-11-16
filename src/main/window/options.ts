@@ -2,7 +2,7 @@
  * @Description: 所有类型的窗口管理配置
  * @Author: renlu
  * @Date: 2021-09-26 10:22:34
- * @LastEditTime: 2021-11-15 19:14:21
+ * @LastEditTime: 2021-11-16 10:31:21
  * @LastEditors: renlu
  */
 import { allWindowType } from '../types'
@@ -17,7 +17,8 @@ export const options: allWindowType = {
       alwaysOnTop: false,
       useContentSize: true,
       frame: true,
-      backgroundColor: '#fff'
+      backgroundColor: '#fff',
+      icon: 'dist/favicon.ico'
     },
     hash: '/defaultWin'
   },
