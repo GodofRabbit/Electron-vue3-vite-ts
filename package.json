@@ -7,6 +7,7 @@
   "license": "MIT",
   "scripts": {
     "format": "npx prettier --write .",
+    "rebuild": "npm rebuild --runtime=electron --target=16.0.0 --disturl=https://atom.io/download/atom-shell --abi=93",
     "/": "----------------------------------------------------------------------------------------------------",
     "dev": "concurrently -n=R,P,M -c=green,yellow,blue \"npm run dev:render\" \"npm run dev:preload\" \"npm run dev:main\"",
     "dev:render": "vite",
@@ -77,6 +78,8 @@
   "dependencies": {
     "@element-plus/icons": "0.0.11",
     "element-plus": "^1.1.0-beta.16",
+    "puppeteer": "^11.0.0",
+    "robotjs": "^0.6.0",
     "vue": "^3.2.11",
     "vue-router": "^4.0.11"
   },
@@ -95,7 +98,7 @@
     "@vue/compiler-sfc": "^3.2.11",
     "chalk": "^4.1.0",
     "concurrently": "^6.0.0",
-    "electron": "15.0.0-beta.3",
+    "electron": "^16.0.0",
     "electron-builder": "^22.10.5",
     "eslint": "^7.32.0",
     "eslint-config-airbnb-base": "^14.2.1",

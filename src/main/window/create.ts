@@ -2,7 +2,7 @@
  * @Description: 创建窗口的方法
  * @Author: renlu
  * @Date: 2021-09-26 11:06:02
- * @LastEditTime: 2021-10-20 14:08:16
+ * @LastEditTime: 2021-11-16 15:31:36
  * @LastEditors: renlu
  */
 import { app, BrowserWindow } from 'electron'
@@ -29,6 +29,7 @@ export default function createWindow(
   const win = new BrowserWindow({
     ...options,
     webPreferences: {
+      webviewTag: true,
       preload: path.join(__dirname, '../preload/index.js')
     }
   })

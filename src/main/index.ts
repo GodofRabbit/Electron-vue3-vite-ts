@@ -2,11 +2,13 @@
  * @Description: Electorn 主进程配置
  * @Author: renlu
  * @Date: 2021-09-18 18:22:38
- * @LastEditTime: 2021-11-15 18:39:52
+ * @LastEditTime: 2021-11-16 18:09:16
  * @LastEditors: renlu
  */
 import { setTray, createDefaultWindow } from './window'
-import { app, Menu, ipcMain } from 'electron'
+import { app, Menu, ipcMain, screen } from 'electron'
+
+import './puppeteer'
 
 // 关闭菜单栏
 Menu.setApplicationMenu(null)
@@ -16,7 +18,9 @@ const gotTheLock = app.requestSingleInstanceLock()
 if (!gotTheLock) app.quit()
 
 app.whenReady().then(() => {
-  setTray() // 设置托盘图标与菜单
+  const { width: screen_width, height: screen_height } = screen.getPrimaryDisplay().workAreaSize
+
+  setTray(screen_width, screen_height) // 设置托盘图标与菜单
 
   const defaultWindow = createDefaultWindow() // 创建默认窗口
 

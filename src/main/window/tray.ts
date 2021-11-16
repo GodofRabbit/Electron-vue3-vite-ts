@@ -2,17 +2,19 @@
  * @Description: 设置托盘图标与菜单
  * @Author: renlu
  * @Date: 2021-09-26 11:08:49
- * @LastEditTime: 2021-11-16 09:57:53
+ * @LastEditTime: 2021-11-16 18:14:38
  * @LastEditors: renlu
  */
-import { app, Tray, Menu, BrowserWindow } from 'electron'
+import { app, Tray, Menu, ipcMain, BrowserWindow } from 'electron'
 import createWindow from './create'
 import { options as allWindow } from './options'
+import openUrl from '../puppeteer'
+import { url } from 'inspector'
 
 const path = require('path')
 
 let appTray: Tray
-export function setTray(): Tray {
+export function setTray(screen_width: number, screen_height: number): Tray {
   if (appTray) return appTray
 
   const trayMenuTemplate = [
@@ -20,6 +22,23 @@ export function setTray(): Tray {
       label: '菜单一',
       click() {
         createWindow(allWindow.menuOne.window, allWindow.menuOne.hash)
+      }
+    },
+    {
+      label: '菜单二',
+      click() {
+        createWindow(allWindow.menuTwo.window, allWindow.menuTwo.hash)
+      }
+    },
+    {
+      label: '自动化测试',
+      click() {
+        createWindow(allWindow.menuThree.window, allWindow.menuThree.hash)
+
+        // 监听打开网址的事件
+        ipcMain.on('openUrl', (event, url) => {
+          openUrl(screen_width, screen_height, url)
+        })
       }
     },
     {
